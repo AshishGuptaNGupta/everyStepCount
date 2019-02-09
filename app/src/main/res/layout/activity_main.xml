@@ -21,19 +21,20 @@
         android:textSize="36sp" />
 
     <Button
-        android:id="@+id/btn1"
-        android:width="300dp"
+        android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="83dp"
+        android:width="300dp"
         android:background="@drawable/gradient_1"
         android:text="Login"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        />
 
     <EditText
-        android:id="@+id/et1"
+        android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -42,13 +43,13 @@
         android:width="300dp"
         android:background="#55000000"
         android:ems="10"
+        android:hint="Username"
         android:inputType="textPersonName"
         android:padding="15dp"
-        android:text="Username"
         android:textColor="@android:color/white" />
 
     <EditText
-        android:id="@+id/et2"
+        android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -57,9 +58,9 @@
         android:width="300dp"
         android:background="#55000000"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
         android:padding="15dp"
-        android:text="Password"
         android:textColor="@android:color/white" />
 
     <TextView
@@ -75,7 +76,7 @@
         android:textColor="@android:color/black" />
 
     <Button
-        android:id="@+id/btn2"
+        android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView2"
@@ -87,5 +88,6 @@
         android:text="Register"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        />
 </RelativeLayout>
