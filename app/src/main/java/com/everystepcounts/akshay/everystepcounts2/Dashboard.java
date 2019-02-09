@@ -6,16 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class Dasbboard extends AppCompatActivity {
+public class Dashboard extends AppCompatActivity {
 
-    private DrawerLayout mDrawer;
+    private DrawerLayout mDrawer = (DrawerLayout) findViewById(R.id.drawer);
     private ActionBarDrawerToggle mToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        mDrawer = (DrawerLayout) findViewById(R.id.drawer);
         mToggle = new ActionBarDrawerToggle(this, mDrawer, R.string.open, R.string.close);
         mDrawer.addDrawerListener(mToggle);
         mToggle.syncState();

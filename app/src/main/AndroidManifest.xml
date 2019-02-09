@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Dasbboard" />
+        <activity android:name=".Dashboard" />
         <activity android:name=".Registeration_Form"></activity>
     </application>
 

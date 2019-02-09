@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import java.util.Objects;
-import android.view.View.OnClickListener;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 if(Objects.equals(Username.getText().toString(), "admin")&&Objects.equals(Password.getText().toString(),"admin"))
                 {
                     Toast.makeText(MainActivity.this,"You have Authenticated Successfully",Toast.LENGTH_LONG).show();
-                    Intent intent=new Intent(MainActivity.this, Dasbboard.class);
+                    Intent intent=new Intent(MainActivity.this, Dashboard.class);
                     startActivity(intent);
                 }
                 else
