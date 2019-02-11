@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="62dp"
         android:fontFamily="@font/billabong"
-        android:text="Every Step Counts"
+        android:text="@string/every_step_counts"
         android:textColor="@android:color/white"
         android:textSize="36sp" />
 
@@ -30,7 +30,7 @@
         android:layout_marginBottom="83dp"
         android:width="300dp"
         android:background="@drawable/gradient_1"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@android:color/white"
         />
 
@@ -44,10 +44,11 @@
         android:width="300dp"
         android:background="#55000000"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/username"
         android:inputType="textPersonName"
         android:padding="15dp"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -59,10 +60,11 @@
         android:width="300dp"
         android:background="#55000000"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:padding="15dp"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/textView2"
@@ -72,7 +74,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="73dp"
         android:layout_marginBottom="37dp"
-        android:text="Dont have a Account?"
+        android:text="@string/dont_have_a_account"
         android:textAllCaps="false"
         android:textColor="@android:color/black" />
 
@@ -86,7 +88,7 @@
         android:layout_marginEnd="101dp"
         android:background="#00ffffff"
         android:fontFamily="sans-serif"
-        android:text="Register"
+        android:text="@string/register"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="14sp"

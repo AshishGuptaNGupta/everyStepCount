@@ -2,4 +2,17 @@
     <string name="app_name">EveryStepCounts2</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="register">Register</string>
+    <string name="every_step_counts">Every Step Counts</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="dont_have_a_account">Dont have a Account?</string>
+    <string name="title_activity_dashboard2">Dashboard2</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 </resources>

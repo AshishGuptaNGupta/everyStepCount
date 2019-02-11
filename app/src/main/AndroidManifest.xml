@@ -16,8 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Dashboard" />
-        <activity android:name=".Registeration_Form"></activity>
+        <activity android:name=".Registeration_Form" />
+        <activity
+            android:name=".Dashboard2"
+            android:label="@string/title_activity_dashboard2"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

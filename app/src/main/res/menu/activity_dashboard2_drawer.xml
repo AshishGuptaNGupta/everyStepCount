@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/dashboard"
+            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:title="Dashboard" />
+        <item
+            android:id="@+id/wallet"
+            android:icon="@drawable/ic_account_balance_wallet_black_24dp"
+            android:title="Wallet" />
+        <item
+            android:id="@+id/stats"
+            android:icon="@drawable/ic_directions_walk_black_24dp"
+            android:title="Statics" />
+        <item
+            android:id="@+id/offer"
+            android:icon="@drawable/ic_local_offer_black_24dp"
+            android:title="Offers" />
+        <item
+            android:id="@+id/refafriend"
+            android:icon="@drawable/ic_contact_mail_black_24dp"
+            android:title="Reffer a Friend" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="Settings" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+            android:id="@+id/help"
+            android:icon="@drawable/ic_help_outline_black_24dp"
+            android:title="Help " />
+            <item
+                android:id="@+id/darkmode"
+                android:icon="@drawable/ic_mood_black_24dp"
+                android:title="Dark Mode" />
+
+        </menu>
+    </item>
+
+</menu>

@@ -20,22 +20,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Username = findViewById(R.id.etName);
-        Password = findViewById(R.id.etPassword);
-        Login = findViewById(R.id.btnLogin);
+        Username = (EditText) findViewById(R.id.etName);
+        Password = (EditText) findViewById(R.id.etPassword);
+        Login = (Button) findViewById(R.id.btnLogin);
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Objects.equals(Username.getText().toString(), "admin")&&Objects.equals(Password.getText().toString(),"admin"))
-                {
-                    Toast.makeText(MainActivity.this,"You have Authenticated Successfully",Toast.LENGTH_LONG).show();
-                    Intent intent=new Intent(MainActivity.this, Dashboard.class);
+                if(Username.getText().toString().equals("admin") && Password.getText().toString().equals("admin")) {
+                    Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(MainActivity.this, Dashboard2.class);
                     startActivity(intent);
                 }
                 else
                 {
-                    Toast.makeText(MainActivity.this,"Authentication Failed",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
                 }
             }
         });
