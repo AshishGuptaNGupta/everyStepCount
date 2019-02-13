@@ -13,14 +13,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
-public class Dashboard2 extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+
+public class Dashboard2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private Button Start;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard2);
+        Start = (Button) findViewById(R.id.btnStart);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -34,6 +38,12 @@ public class Dashboard2 extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    public void onClick(View view){
+
+        Intent intent = new Intent(this, home.class);
+        startActivity(intent);
     }
 
     @Override
