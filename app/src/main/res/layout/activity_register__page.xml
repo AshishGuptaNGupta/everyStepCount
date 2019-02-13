@@ -88,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView7"
         android:layout_alignEnd="@+id/etName"
-        android:layout_marginEnd="-1dp"
+        android:layout_marginEnd="3dp"
         android:ems="10"
         android:hint="Email-ID"
         android:inputType="textPersonName"
@@ -126,7 +126,7 @@
         android:layout_marginBottom="-37dp">
 
         <RadioButton
-            android:id="@+id/rbtnMale"
+            android:id="@+id/male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -135,7 +135,7 @@
             android:textSize="18sp" />
 
         <RadioButton
-            android:id="@+id/rbtnFemale"
+            android:id="@+id/female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -143,5 +143,28 @@
             android:textColor="@android:color/white"
             android:textSize="18sp" />
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/weightLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="584dp"
+        android:text="weight"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="584dp"
+        android:ems="10"
+        android:hint="enter weight"
+        android:inputType="textPersonName"
+        android:text="weight" />
 
 </RelativeLayout>
