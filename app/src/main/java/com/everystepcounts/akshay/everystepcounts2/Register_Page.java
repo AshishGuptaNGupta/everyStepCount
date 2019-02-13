@@ -9,29 +9,64 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Register_Page extends AppCompatActivity {
 
     private EditText Name, Email, Password;
     private Button Register;
     private RadioGroup rg;
-    private RadioButton rMale, rFemale;
+    private RadioButton male, female;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    String gender;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseUser user;
+    Map<String, Object> userMap = new HashMap<>();
+    TextView weight;
 
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+
+        switch(view.getId()) {
+            case R.id.male:
+                if (checked)
+
+                    break;
+            case R.id.female:
+                if (checked)
+
+                    break;
+        }
+        Log.i("gender",gender);
+    }
     public void onClick(View v) {
+        userMap.put("email",Name.getText().toString());
+        userMap.put("name",Email.getText().toString());
+        userMap.put("weight",weight.getText().toString());
+
+
+
+
         mAuth.createUserWithEmailAndPassword(Email.getText().toString(), Password.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
                             Log.i("Register", "createUserWithEmail:success");
+
 
                         } else {
 
@@ -40,6 +75,19 @@ public class Register_Page extends AppCompatActivity {
 
                     }
                 });
+        db.collection("users").document(Email.getText().toString())
+                .set(userMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.i("doc", "success");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.i("doc", "fail",e);
+            }
+        });
     }
 
     @Override
@@ -47,13 +95,14 @@ public class Register_Page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register__page);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        weight=findViewById(R.id.weight);
 
         Name = (EditText) findViewById(R.id.etName);
         Email = (EditText) findViewById(R.id.etEmail);
         Password = (EditText) findViewById(R.id.etPassword);
         Register = (Button) findViewById(R.id.btnRegister);
-        rMale = (RadioButton) findViewById(R.id.rbtnMale);
-        rFemale = (RadioButton) findViewById(R.id.rbtnFemale);
+        male = (RadioButton) findViewById(R.id.male);
+        female = (RadioButton) findViewById(R.id.female);
 
     }
 }
