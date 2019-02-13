@@ -5,6 +5,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/profile"
+            android:icon="@drawable/profile"
+            android:title="Profile" />
+        <item
             android:id="@+id/dashboard"
             android:icon="@drawable/ic_dashboard_black_24dp"
             android:title="Dashboard" />
@@ -28,6 +32,7 @@
             android:id="@+id/settings"
             android:icon="@drawable/ic_settings_black_24dp"
             android:title="Settings" />
+
     </group>
 
     <item android:title="Communicate">

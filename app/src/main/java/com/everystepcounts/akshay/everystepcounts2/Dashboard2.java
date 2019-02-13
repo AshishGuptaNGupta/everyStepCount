@@ -1,5 +1,6 @@
 package com.everystepcounts.akshay.everystepcounts2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -60,9 +61,6 @@ public class Dashboard2 extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -73,8 +71,14 @@ public class Dashboard2 extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.dashboard) {
-            // Handle the camera action
+        if (id == R.id.profile){
+            Intent intent = new Intent(this, Profile.class );
+            startActivity(intent);
+
+        } else if (id == R.id.dashboard) {
+            Intent intent = new Intent(this, Dashboard2.class);
+            startActivity(intent);
+
         } else if (id == R.id.wallet) {
 
         } else if (id == R.id.stats) {
