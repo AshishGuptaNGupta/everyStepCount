@@ -20,7 +20,8 @@
             android:name=".Dashboard2"
             android:label="@string/title_activity_dashboard2"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Register_Page"></activity>
+        <activity android:name=".Register_Page" />
+        <activity android:name=".Forgot_Password"></activity>
     </application>
 
 </manifest>
