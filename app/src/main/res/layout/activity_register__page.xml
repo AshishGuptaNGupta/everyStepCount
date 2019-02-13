@@ -164,7 +164,6 @@
         android:layout_marginTop="584dp"
         android:ems="10"
         android:hint="enter weight"
-        android:inputType="textPersonName"
-        android:text="weight" />
+        android:inputType="textPersonName" />
 
 </RelativeLayout>
