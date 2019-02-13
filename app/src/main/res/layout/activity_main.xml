@@ -30,9 +30,9 @@
         android:layout_marginBottom="83dp"
         android:width="300dp"
         android:background="@drawable/gradient_1"
+        android:onClick="onClick"
         android:text="@string/login"
-        android:textColor="@android:color/white"
-        />
+        android:textColor="@android:color/white" />
 
     <EditText
         android:id="@+id/etName"
@@ -84,10 +84,11 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView2"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="-16dp"
-        android:layout_marginEnd="101dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="95dp"
         android:background="#00ffffff"
         android:fontFamily="sans-serif"
+        android:onClick="register"
         android:text="@string/register"
         android:textAllCaps="false"
         android:textColor="@android:color/white"

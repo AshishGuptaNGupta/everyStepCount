@@ -30,24 +30,17 @@ public class Register_Page extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.i("Register", "createUserWithEmail:success");
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w("Not Registered", "createUserWithEmail:failure", task.getException());
 
+                            Log.i("Register", "createUserWithEmail:success");
+
+                        } else {
+
+                            Log.i( "register", "createUserWithEmail:fail");
                         }
 
-                        // ...
                     }
                 });
-
-
-
     }
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
