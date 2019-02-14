@@ -21,4 +21,12 @@
             android:layout_height="match_parent" />
     </android.support.v7.widget.CardView>
 
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="onClick"
+        android:text="Start" />
+
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.everystepcounts.akshay.everystepcounts2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,14 +13,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
-public class Dashboard2 extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+
+public class Dashboard2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private Button Start;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard2);
+        Start = (Button) findViewById(R.id.btnStart);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -33,6 +38,12 @@ public class Dashboard2 extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    public void onClick(View view){
+
+        Intent intent = new Intent(this, home.class);
+        startActivity(intent);
     }
 
     @Override
@@ -60,9 +71,6 @@ public class Dashboard2 extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -73,8 +81,14 @@ public class Dashboard2 extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.dashboard) {
-            // Handle the camera action
+        if (id == R.id.profile){
+            Intent intent = new Intent(this, Profile.class );
+            startActivity(intent);
+
+        } else if (id == R.id.dashboard) {
+            Intent intent = new Intent(this, Dashboard2.class);
+            startActivity(intent);
+
         } else if (id == R.id.wallet) {
 
         } else if (id == R.id.stats) {

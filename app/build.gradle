@@ -6,6 +6,7 @@ android {
         applicationId "com.everystepcounts.akshay.everystepcounts2"
         minSdkVersion 19
         targetSdkVersion 28
+        multiDexEnabled true
         versionCode 1
         multiDexEnabled true
         versionName "1.0"
@@ -32,6 +33,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:18.0.1'
     implementation 'com.google.firebase:firebase-core:16.0.7'
     implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
 
 }
 apply plugin: 'com.google.gms.google-services'
