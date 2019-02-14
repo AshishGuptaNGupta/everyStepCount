@@ -7,6 +7,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
+        multiDexEnabled true
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -34,4 +35,4 @@ dependencies {
 
 }
 apply plugin: 'com.google.gms.google-services'
-com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck
+com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck=true

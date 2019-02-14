@@ -37,21 +37,7 @@ public class Register_Page extends AppCompatActivity {
     Map<String, Object> userMap = new HashMap<>();
     TextView weight;
 
-    public void onRadioButtonClicked(View view) {
-        boolean checked = ((RadioButton) view).isChecked();
 
-        switch(view.getId()) {
-            case R.id.male:
-                if (checked)
-
-                    break;
-            case R.id.female:
-                if (checked)
-
-                    break;
-        }
-        Log.i("gender",gender);
-    }
     public void onClick(View v) {
         userMap.put("email",Name.getText().toString());
         userMap.put("name",Email.getText().toString());
@@ -66,7 +52,20 @@ public class Register_Page extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Log.i("Register", "createUserWithEmail:success");
-
+                            user=mAuth.getCurrentUser();
+                            db.collection("users").document(user.getUid())
+                                    .set(userMap)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.i("doc", "success");
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.i("doc", "fail",e);
+                                }
+                            });
 
                         } else {
 
@@ -75,19 +74,7 @@ public class Register_Page extends AppCompatActivity {
 
                     }
                 });
-        db.collection("users").document(Email.getText().toString())
-                .set(userMap)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.i("doc", "success");
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.i("doc", "fail",e);
-            }
-        });
+
     }
 
     @Override
@@ -96,6 +83,7 @@ public class Register_Page extends AppCompatActivity {
         setContentView(R.layout.activity_register__page);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         weight=findViewById(R.id.weight);
+
 
         Name = (EditText) findViewById(R.id.etName);
         Email = (EditText) findViewById(R.id.etEmail);
