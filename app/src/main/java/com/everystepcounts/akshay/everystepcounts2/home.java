@@ -15,6 +15,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.google.protobuf.DescriptorProtos;
 import com.google.type.LatLng;
@@ -29,6 +30,7 @@ public class home extends AppCompatActivity {
     boolean initialFlag=true;
     boolean destinationFlag=true;
     float[] distanceTravelled=new float[1];
+    TextView distance;
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -44,7 +46,7 @@ public class home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        distance=findViewById(R.id.distance);
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         locationListener = new LocationListener() {
@@ -65,6 +67,8 @@ public class home extends AppCompatActivity {
                 Location.distanceBetween(initial.getLatitude(),initial.getLongitude(),destination.getLatitude(),destination.getLongitude(),distanceTravelled);
                 Log.i("location", location.toString());
                 Log.i("distance", Float.toString(distanceTravelled[0]));
+                distance.setText( Float.toString(distanceTravelled[0]));
+
             }
 
             @Override

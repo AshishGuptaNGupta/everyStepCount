@@ -6,4 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".home">
 
+    <TextView
+        android:id="@+id/distance"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="249dp" />
 </android.support.constraint.ConstraintLayout>
