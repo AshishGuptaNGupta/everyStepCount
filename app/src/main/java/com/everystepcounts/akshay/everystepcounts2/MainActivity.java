@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.i("Login", "Logged in");
                             Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(getApplicationContext(), DashBoard.class);
+                            Intent intent=new Intent(getApplicationContext(), Dashboard2.class);
                             startActivity(intent);
                         } else {
                             Toast.makeText(getApplicationContext(),"Incorrect credentials",Toast.LENGTH_SHORT).show();
