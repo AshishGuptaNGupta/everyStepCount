@@ -79,7 +79,7 @@
         android:layout_marginBottom="102dp"
         android:text="@string/dont_have_a_account"
         android:textAllCaps="false"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textStyle="bold" />
 
     <Button
