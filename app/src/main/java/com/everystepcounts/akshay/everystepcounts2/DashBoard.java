@@ -5,14 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 public class DashBoard extends AppCompatActivity {
 
     Intent intent;
-
     String walking="0";
     String running="1";
     String activity;
+    TextView distance;
     public void selectActivity(View view) {
 
         boolean checked = ((RadioButton) view).isChecked();
@@ -21,11 +22,11 @@ public class DashBoard extends AppCompatActivity {
             case R.id.walking:
                 if (checked)
                     activity=walking;
-                    break;
+                break;
             case R.id.Running:
                 if (checked)
                     activity=running;
-                    break;
+                break;
         }
     }
 
@@ -38,6 +39,10 @@ public class DashBoard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
+        distance=findViewById(R.id.distance);
         intent=new Intent(this, MapsActivity.class);
+        Bundle bs= new Intent().getExtras();
+
+
     }
 }

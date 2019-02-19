@@ -81,7 +81,6 @@ public class Register_Page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register__page);
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         weight=findViewById(R.id.weight);
 
 

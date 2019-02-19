@@ -17,6 +17,8 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -28,9 +30,21 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     LocationManager locationManager;
@@ -48,6 +62,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Circle circle;
     int activity;
     int acceptanceDistance;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseUser user;
+    Map<String, Object> userMap = new HashMap<>();
+    String formattedDate;
+    String formattedTime;
+    TextView distanceTextView;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -68,6 +89,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    public void stopActivity(View view){
+        userMap.put("distance Travelled",distanceTravelled);
+        userMap.put("date ",formattedDate);
+        userMap.put("Time ",formattedTime);
+        db.collection("workout").document(user.getUid())
+                .collection(formattedDate).document(formattedTime)
+                .set(userMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.i("doc", "success");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.i("doc", "fail",e);
+            }
+        });
+        Intent intent=new Intent(getApplicationContext(),DashBoard.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,8 +117,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        criteria.setAccuracy(Criteria.ACCURACY_FINE);
+        criteria.setPowerRequirement(Criteria.POWER_HIGH);
+        criteria.setAltitudeRequired(false);
+        criteria.setSpeedRequired(false);
+        criteria.setCostAllowed(true);
+        criteria.setBearingRequired(true);
+
+//API level 9 and up
+        criteria.setHorizontalAccuracy(Criteria.ACCURACY_HIGH);
+        criteria.setVerticalAccuracy(Criteria.ACCURACY_HIGH);
         Intent intent = getIntent();
         activity= Integer.parseInt(intent.getStringExtra("Activity"));
+        user=mAuth.getCurrentUser();
+        distanceTextView=findViewById(R.id.distance);
+
+        Date time=Calendar.getInstance().getTime();
+        SimpleDateFormat tm = new SimpleDateFormat("HH-mm-ss");
+        formattedTime=tm.format(time);
+
+        Date date = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        formattedDate = df.format(date);
+
 
         mapFragment.getMapAsync(this);
 
@@ -112,6 +175,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
+
                 mMap.clear();
                 float[] distance = new float[1];
                 if(initialFlag){
@@ -134,6 +198,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         mMap.setMinZoomPreference(18);
                         points.add(destination);
                         line.setPoints(points);
+                        distanceTextView.setText(Float.toString(distanceTravelled));
+
 
 
                     }
@@ -155,15 +221,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         mMap.setMinZoomPreference(18);
                         points.add(destination);
                         line.setPoints(points);
+                        distanceTextView.setText(Float.toString(distanceTravelled));
 
 
                     }
                 }
                 Log.i("location", location.toString());
                 Log.i("distance", Float.toString(distance[0]));
+                Log.i("distance travelled", Float.toString(distanceTravelled));
 
 
-//                distanceText.setText(Float.toString(distanceTravelled));
+
+
             }
                 @Override
                 public void onStatusChanged(String provider, int status, Bundle extras) {
