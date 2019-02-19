@@ -36,6 +36,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.sql.Array;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -69,6 +70,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String formattedDate;
     String formattedTime;
     TextView distanceTextView;
+    int sec;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -87,6 +89,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .strokeColor(Color.RED)
                 .fillColor(Color.BLUE));
 
+    }
+    public void drawPolyline(LatLng destination){
+        final Polyline line = mMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(initial1.getLatitude(),initial1.getLongitude()),destination)
+                .width(25)
+                .color(Color.BLUE));
     }
 
     public void stopActivity(View view){
@@ -123,7 +131,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         criteria.setSpeedRequired(false);
         criteria.setCostAllowed(true);
         criteria.setBearingRequired(true);
-
+        criteria.isSpeedRequired();
 //API level 9 and up
         criteria.setHorizontalAccuracy(Criteria.ACCURACY_HIGH);
         criteria.setVerticalAccuracy(Criteria.ACCURACY_HIGH);
@@ -157,6 +165,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * installed Google Play services and returned to the app.
      */
 
+
+
     @SuppressLint("MissingPermission")
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -165,10 +175,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }else
             acceptanceDistance=4;
         mMap = googleMap;
-        final Polyline line = mMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(0, 0), new LatLng(0,0 ))
-                .width(5)
-                .color(Color.RED));
+        mMap.setMyLocationEnabled(true);
+
 
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -189,15 +197,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Location.distanceBetween(initial.getLatitude(),initial.getLongitude(),destination.latitude,destination.longitude,distance);
                     if(distance[0]<acceptanceDistance)
                     {
-                        distanceTravelled=distanceTravelled+(distance[0]-distanceTravelled);
+                        distanceTravelled=distanceTravelled+distance[0];
                         initial.setLatitude(location.getLatitude());
                         initial.setLongitude(location.getLongitude());
                         currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
                         mMap.setMaxZoomPreference(18);
                         mMap.setMinZoomPreference(18);
-                        points.add(destination);
-                        line.setPoints(points);
+//                        points.add(destination);
+//                        line.setPoints(points);
+                        drawPolyline(destination);
                         distanceTextView.setText(Float.toString(distanceTravelled));
 
 
@@ -206,12 +215,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
                 else
                 {
+                    if(sec==5){
+                        initial.setLatitude(location.getLatitude());
+                        initial.setLongitude(location.getLongitude());
+                        sec=0;
+                    }
+                    sec++;
                     destination=new LatLng(location.getLatitude(),location.getLongitude());
                     createCircle(currentLocation);
                     Location.distanceBetween(initial.getLatitude(),initial.getLongitude(),destination.latitude,destination.longitude,distance);
-                    if(distance[0]<acceptanceDistance)
+                    if(distance[0]<acceptanceDistance&&distance[0]>1)
                     {
-                        distanceTravelled=distanceTravelled+(distance[0]-distanceTravelled);
+                        distanceTravelled=distanceTravelled+distance[0];
                         initial.setLatitude(location.getLatitude());
                         initial.setLongitude(location.getLongitude());
                         currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
@@ -220,12 +235,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         mMap.setMaxZoomPreference(18);
                         mMap.setMinZoomPreference(18);
                         points.add(destination);
-                        line.setPoints(points);
+                        drawPolyline(destination);
+//                        line.setPoints(points);
                         distanceTextView.setText(Float.toString(distanceTravelled));
 
 
                     }
                 }
+
                 Log.i("location", location.toString());
                 Log.i("distance", Float.toString(distance[0]));
                 Log.i("distance travelled", Float.toString(distanceTravelled));
