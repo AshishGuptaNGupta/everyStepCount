@@ -19,6 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -36,7 +37,7 @@ public class Register_Page extends AppCompatActivity {
     FirebaseUser user;
     Map<String, Object> userMap = new HashMap<>();
     TextView weight;
-
+    String TAG = "Log";
 
     public void onClick(View v) {
         userMap.put("email",Name.getText().toString());
@@ -79,6 +80,7 @@ public class Register_Page extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register__page);
         weight=findViewById(R.id.weight);

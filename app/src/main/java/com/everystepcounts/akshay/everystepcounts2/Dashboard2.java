@@ -14,17 +14,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-
+import android.widget.ProgressBar;
+import android.os.Handler;
 
 public class Dashboard2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Button Start;
+    private ProgressBar mProgressBar;
+    private int mProgressStatus = 0;
+    private Handler mHandler = new Handler();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard2);
-        Start = (Button) findViewById(R.id.btnStart);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -38,13 +42,30 @@ public class Dashboard2 extends AppCompatActivity implements NavigationView.OnNa
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        mProgressBar = (ProgressBar) findViewById(R.id.progressbar);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (mProgressStatus < 100){
+                    mProgressStatus++;
+                    android.os.SystemClock.sleep(50);
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            mProgressBar.setProgress(mProgressStatus);
+                        }
+                    });
+                }
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                    }
+                });
+            }
+        }).start(); //Dummy Code
     }
 
-    public void onClick(View view){
-
-        Intent intent = new Intent(this, home.class);
-        startActivity(intent);
-    }
 
     @Override
     public void onBackPressed() {
