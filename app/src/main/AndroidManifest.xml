@@ -12,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Stats"></activity>
+        <activity android:name=".home1" />
         <activity android:name=".Splash_Screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,20 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".MainActivity"/>
-
-        <activity
-            android:name=".Dashboard2"
-            android:label="@string/title_activity_dashboard2"
-            android:theme="@style/AppTheme" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".Register_Page" />
         <activity android:name=".Forgot_Password" />
         <activity android:name=".DashBoard" />
         <activity android:name=".Profile" />
-
-
     </application>
 
 </manifest>
