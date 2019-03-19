@@ -16,4 +16,14 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_map">Map</string>
+    <string name="title_activity_challenge">Challenge</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="default_notification_channel_id" translatable="false">"follow"</string>
+    <string name="direct_message">direct_message</string>
+    <string name="data_type">data_type</string>
+    <string name="Male">Male</string>
+    <string name="Female">Female</string>
 </resources>

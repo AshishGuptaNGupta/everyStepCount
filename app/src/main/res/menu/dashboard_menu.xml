@@ -2,20 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@android:drawable/ic_menu_zoom"
-        android:title="Home" />
+        android:id="@+id/navigation_feed"
+        android:icon="@drawable/ic_home"
+        android:title="Feed" />
+
+    <item
+        android:id="@+id/navigation_findPeople"
+        android:icon="@drawable/ic_findpeople"
+        android:title="Find people" />
 
     <item
         android:id="@+id/navigation_activity"
         android:icon="@drawable/ic_running"
         android:title="Run" />
 
-
-
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@android:drawable/ic_menu_zoom"
+        android:icon="@drawable/ic_man_user"
         android:title="Profile" />
+
+
 
 </menu>

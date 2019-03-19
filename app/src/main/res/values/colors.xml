@@ -7,4 +7,7 @@
     <color name="black">#000000</color>
     <color name="darkgray">#a9a9a9</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="graylight">#fafafa</color>
+    <color name="startblue">#09c6df</color>
+    <color name="endblue">#0bcce6</color>
 </resources>
